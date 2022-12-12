@@ -145,7 +145,7 @@ STATICFILES_FINDERS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 GRAPHENE = {
-    "SCHEMA": "portal.graphql.schema.schema",
+    "SCHEMA": "graphqlstarter.graphql.schema.schema",
     "SCHEMA_OUTPUT": "schema.graphql",
     "SCHEMA_INDENT": 2,
     "MIDDLEWARE": ["graphql_jwt.middleware.JSONWebTokenMiddleware"],
