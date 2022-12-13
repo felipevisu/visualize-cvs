@@ -29,6 +29,7 @@ dist/
 *\.egg*
 # data
 /media/
+/static/
 /node_modules/
 /staticfiles/
 

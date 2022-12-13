@@ -137,9 +137,6 @@ DEFAULT_FILE_STORAGE = "storages.backends.ftp.FTPStorage"
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, "static")
 STATIC_URL = os.environ.get("STATIC_URL", "/static/")
-STATICFILES_DIRS = [
-    ("images", os.path.join(PROJECT_ROOT, "graphqlstarter", "static", "images"))
-]
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
