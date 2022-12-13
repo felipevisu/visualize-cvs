@@ -79,6 +79,8 @@ WSGI_APPLICATION = "graphqlstarter.wsgi.application"
 
 DATABASE_CONNECTION_DEFAULT_NAME = "default"
 
+DB_HOST = os.environ.get("DB_HOST", "")
+
 DB_USER = os.environ.get("DB_USER", "")
 
 DB_PASSWORD = os.environ.get("DB_PASSWORD", "")
@@ -87,7 +89,7 @@ DB_NAME = os.environ.get("DB_NAME", "")
 
 DATABASES = {
     DATABASE_CONNECTION_DEFAULT_NAME: dj_database_url.config(
-        default=f"postgres://{DB_USER}:{DB_PASSWORD}@localhost:5432/{DB_NAME}",
+        default=f"postgres://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:5432/{DB_NAME}",
         conn_max_age=600,
     ),
 }
