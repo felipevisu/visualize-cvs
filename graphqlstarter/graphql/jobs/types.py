@@ -1,0 +1,44 @@
+import graphene
+
+from ...jobs import models
+from ..core.connection import CountableConnection
+from ..core.types.common import File
+from ..core.types.model import ModelObjectType
+
+
+class Job(ModelObjectType):
+    id = graphene.GlobalID(required=True)
+    name = graphene.String(required=True)
+
+
+    class Meta:
+        model = models.Job
+
+
+class JobCountableConnection(CountableConnection):
+    class Meta:
+        node = Job
+
+
+class CV(ModelObjectType):
+    id = graphene.GlobalID(required=True)
+    name = graphene.String(required=True)
+    email = graphene.String(required=True)
+    phone = graphene.String(required=True)
+    city = graphene.String(required=True)
+    academic_experience = graphene.String()
+    professional_experience = graphene.String()
+    instagram = graphene.String()
+    facebook = graphene.String()
+    linkedin = graphene.String()
+    behance = graphene.String()
+    portfolio_url = graphene.String()
+    file = graphene.Field(File)
+
+    class Meta:
+        model = models.CV
+
+
+class CVCountableConnection(CountableConnection):
+    class Meta:
+        node = CV

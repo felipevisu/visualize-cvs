@@ -1,12 +1,20 @@
 import graphene
 
-from .blog.schema import Query as BlogQuery
+from .jobs.schema import Mutation as JobMutation
+from .jobs.schema import Query as JobQuery
 
 
 class Query(
-    BlogQuery
+    JobQuery
 ):
     pass
 
 
-schema = graphene.Schema(query=Query)
+
+class Mutation(
+    JobMutation
+):
+    pass
+
+
+schema = graphene.Schema(query=Query, mutation=Mutation)

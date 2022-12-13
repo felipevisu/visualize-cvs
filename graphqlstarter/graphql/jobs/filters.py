@@ -1,27 +1,27 @@
 import django_filters
 from django.db.models import Q
 
-from ...blog.models import Category
+from ...jobs.models import Job
 from ..core.filters import GlobalIDMultipleChoiceFilter
 from ..core.types import FilterInputObjectType
 
 
-class CategoryFilter(django_filters.FilterSet):
-    search = django_filters.CharFilter(method="category_filter_search")
+class JobFilter(django_filters.FilterSet):
+    search = django_filters.CharFilter(method="job_filter_search")
     ids = GlobalIDMultipleChoiceFilter(field_name="id")
 
     class Meta:
-        model = Category
+        model = Job
         fields = ["search"]
 
     @classmethod
-    def category_filter_search(cls, queryset, _name, value):
+    def job_filter_search(cls, queryset, _name, value):
         if not value:
             return queryset
 
         return queryset.filter(Q(name__icontains=value))
 
 
-class CategoryFilterInput(FilterInputObjectType):
+class JobFilterInput(FilterInputObjectType):
     class Meta:
-        filterset_class = CategoryFilter
+        filterset_class = JobFilter
