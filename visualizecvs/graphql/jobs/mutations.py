@@ -4,6 +4,7 @@ from ...jobs import models
 from ..core.mutations import ModelMutation
 from ..core.types.common import NonNullList, Upload
 from .types import CV
+from .utils import send_cv_email
 
 
 class CVInput(graphene.InputObjectType):
@@ -13,11 +14,7 @@ class CVInput(graphene.InputObjectType):
     city = graphene.String(required=True)
     academic_experience = graphene.String()
     professional_experience = graphene.String()
-    instagram = graphene.String()
-    facebook = graphene.String()
-    linkedin = graphene.String()
-    behance = graphene.String()
-    portfolio_url = graphene.String()
+    social_links = graphene.String()
     file = Upload()
     jobs = NonNullList(graphene.ID)
 
@@ -31,3 +28,18 @@ class CVCreate(ModelMutation):
     class Meta:
         model = models.CV
         object_type = CV
+
+    @classmethod
+    def perform_mutation(cls, _root, info, **data):
+        input = data.get("input")
+        instance = models.CV()
+
+        cleaned_input = cls.clean_input(info, instance, input)
+        instance = cls.construct_instance(instance, cleaned_input)
+
+        cls.clean_instance(info, instance)
+        instance.save()
+
+        cls._save_m2m(info, instance, cleaned_input)
+        send_cv_email(cleaned_input, instance)
+        return CVCreate(cv=instance)

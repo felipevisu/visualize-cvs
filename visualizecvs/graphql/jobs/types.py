@@ -28,11 +28,7 @@ class CV(ModelObjectType):
     city = graphene.String(required=True)
     academic_experience = graphene.String()
     professional_experience = graphene.String()
-    instagram = graphene.String()
-    facebook = graphene.String()
-    linkedin = graphene.String()
-    behance = graphene.String()
-    portfolio_url = graphene.String()
+    social_links = graphene.String()
     file = graphene.Field(File)
     jobs = NonNullList(lambda: Job)
 

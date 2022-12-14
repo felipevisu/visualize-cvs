@@ -4,7 +4,7 @@ import graphene
 from django import forms
 from django.core.exceptions import ImproperlyConfigured
 
-from graphqlstarter.graphql.core.types.common import NonNullList
+from visualizecvs.graphql.core.types.common import NonNullList
 
 from ..filters import (EnumFilter, GlobalIDFormField,
                        GlobalIDMultipleChoiceField, ListObjectTypeFilter,

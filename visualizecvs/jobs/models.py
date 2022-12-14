@@ -13,11 +13,7 @@ class CV(models.Model):
     academic_experience = models.TextField(blank=True)
     professional_experience = models.TextField(blank=True)
     jobs = models.ManyToManyField(Job, related_name='cvs')
-    instagram = models.CharField(max_length=200, null=True, blank=True)
-    facebook = models.CharField(max_length=200, null=True, blank=True)
-    linkedin = models.CharField(max_length=200, null=True, blank=True)
-    behance = models.CharField(max_length=200, null=True, blank=True)
-    portfolio_url = models.CharField(max_length=1024, null=True, blank=True)
+    social_links = models.TextField(blank=True)
     file = models.FileField(upload_to="cvs", null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 

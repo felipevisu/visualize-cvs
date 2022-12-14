@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualize Comunicação - Novo Currículo</title>
+  <style>
+    td{
+      padding: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mx-auto">
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>Nome:</td>
+          <td>{{ cv.name }}</td>
+        </tr>
+        <tr>
+          <td>Email:</td>
+          <td>{{ cv.email }}</td>
+        </tr>
+        <tr>
+          <td>Telefone:</td>
+          <td>{{ cv.phone }}</td>
+        </tr>
+        <tr>
+          <td>Cidade:</td>
+          <td>{{ cv.city }}</td>
+        </tr>
+        <tr>
+          <td>Formação acadêmica:</td>
+          <td>{{ cv.academic_experience }}</td>
+        </tr>
+        <tr>
+          <td>Experiência profissional:</td>
+          <td>{{ cv.professional_experience }}</td>
+        </tr>
+        <tr>
+          <td>Áreas de atuação:</td>
+          <td>
+            <ul>
+              {% for job in cv.jobs.all %}
+                <li>{{ job.name }}</li>
+              {% endfor %}
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Currículo:</td>
+          <td>
+            {% if cv.file %}
+              <a href="{{ cv.file.url }}">
+                Donwload arquivo
+              </a>
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <td>Link portfólio:</td>
+          <td>{{ cv.social_links }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

@@ -28,6 +28,10 @@ PROJECT_ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__), ".."))
 
 ALLOWED_HOSTS = ["*"]
 
+SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
+
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -36,7 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # apps
-    "graphqlstarter.jobs",
+    "visualizecvs.jobs",
     # libs
     "corsheaders",
     "django_filters",
@@ -57,7 +61,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "graphqlstarter.urls"
+ROOT_URLCONF = "visualizecvs.urls"
 
 TEMPLATES_DIR = os.path.join(PROJECT_ROOT, "templates")
 
@@ -77,7 +81,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "graphqlstarter.wsgi.application"
+WSGI_APPLICATION = "visualizecvs.wsgi.application"
 
 
 DATABASE_CONNECTION_DEFAULT_NAME = "default"
@@ -148,7 +152,7 @@ STATICFILES_FINDERS = [
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 GRAPHENE = {
-    "SCHEMA": "graphqlstarter.graphql.schema.schema",
+    "SCHEMA": "visualizecvs.graphql.schema.schema",
     "SCHEMA_OUTPUT": "schema.graphql",
     "SCHEMA_INDENT": 2,
     "MIDDLEWARE": ["graphql_jwt.middleware.JSONWebTokenMiddleware"],
