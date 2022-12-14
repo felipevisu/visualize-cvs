@@ -41,5 +41,5 @@ class CVCreate(ModelMutation):
         instance.save()
 
         cls._save_m2m(info, instance, cleaned_input)
-        send_cv_email(cleaned_input, instance)
+        send_cv_email(instance)
         return CVCreate(cv=instance)
