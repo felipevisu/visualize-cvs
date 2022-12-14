@@ -8,7 +8,7 @@ class JobAdmin(admin.ModelAdmin):
 
 
 class CVAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['name', 'created']
 
 
 admin.site.register(Job, JobAdmin)
