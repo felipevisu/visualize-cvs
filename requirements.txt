@@ -14,6 +14,7 @@ graphene-django==2.15.0
 graphene-file-upload==1.3.0
 graphql-core==2.3.2
 graphql-relay==2.0.1
+gunicorn==20.1.0
 isort==5.11.1
 lazy-object-proxy==1.8.0
 mccabe==0.7.0
