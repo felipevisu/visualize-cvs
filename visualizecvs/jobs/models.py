@@ -4,6 +4,14 @@ from django.db import models
 class Job(models.Model):
     name = models.CharField(max_length=100)
 
+    class Meta:
+        ordering = ["name"]
+        verbose_name = "Vaga"
+        verbose_name_plural = "Vagas"
+
+    def __str__(self):
+        return self.name
+
 
 class CV(models.Model):
     name = models.CharField(max_length=100)
