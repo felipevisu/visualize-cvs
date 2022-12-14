@@ -2,7 +2,7 @@ import graphene
 
 from ...jobs import models
 from ..core.connection import CountableConnection
-from ..core.types.common import File
+from ..core.types.common import File, NonNullList
 from ..core.types.model import ModelObjectType
 
 
@@ -34,6 +34,7 @@ class CV(ModelObjectType):
     behance = graphene.String()
     portfolio_url = graphene.String()
     file = graphene.Field(File)
+    jobs = NonNullList(lambda: Job)
 
     class Meta:
         model = models.CV

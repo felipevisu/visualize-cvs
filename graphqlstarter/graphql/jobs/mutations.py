@@ -2,7 +2,7 @@ import graphene
 
 from ...jobs import models
 from ..core.mutations import ModelMutation
-from ..core.types.common import Upload
+from ..core.types.common import NonNullList, Upload
 from .types import CV
 
 
@@ -19,10 +19,11 @@ class CVInput(graphene.InputObjectType):
     behance = graphene.String()
     portfolio_url = graphene.String()
     file = Upload()
+    jobs = NonNullList(graphene.ID)
 
 
 class CVCreate(ModelMutation):
-    document = graphene.Field(CV)
+    cv = graphene.Field(CV)
 
     class Arguments:
         input = CVInput(required=True)
@@ -30,8 +31,3 @@ class CVCreate(ModelMutation):
     class Meta:
         model = models.CV
         object_type = CV
-
-    @classmethod
-    def clean_input(cls, info, instance, data, input_cls=None):
-        cleaned_input = super().clean_input(info, instance, data, input_cls)
-        return cleaned_input

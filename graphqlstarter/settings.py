@@ -38,10 +38,13 @@ INSTALLED_APPS = [
     # apps
     "graphqlstarter.jobs",
     # libs
+    "corsheaders",
     "django_filters",
     "graphene_django",
     "storages",
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
