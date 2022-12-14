@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 
 import dj_database_url
+import django_on_heroku
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -162,3 +163,5 @@ AUTHENTICATION_BACKENDS = [
     "graphql_jwt.backends.JSONWebTokenBackend",
     "django.contrib.auth.backends.ModelBackend",
 ]
+
+django_on_heroku.settings(locals())
