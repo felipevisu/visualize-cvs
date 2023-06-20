@@ -1,23 +1,23 @@
 # Visualize CVS
 
-Projeto em Python/Django com API Graphql para recebimento de currículos para vagas em empresas.
+Project build in Python/Django with a Graphql API to receive CVs on jobs applications.
 
-### Recursos extras
-* Deploy no  Heroku
-* Envio de notificações com sendgrid
+### RExtra resourses
+* Deploy on Heroku
+* Notification system with SendGrid
 
-## Execução local
+## Localhost execution
 
-Em um ambiente Linux iniciar e execultar uma numa `venv`
+In an envirounment with Linux start and excecute a python virtualenv `venv`
 ```
 virtualenv venv
 source venv bin activate
 ```
-Instalar dependências
+Install the dependencies
 ```
 pip install -r requirements.txt
 ```
-Configurar arquivo .env
+Configure the .env file
 ```
 SECRET_KEY=
 DEBUG=
@@ -31,7 +31,7 @@ DB_NAME=
 MEDIA_URL=
 STATIC_URL=
 ```
-Executar em local host
+Run in localhost
 ```
 python manage.py runserver
 ```
